@@ -1,0 +1,113 @@
+:root {
+    --cor_fundo : rgb(192, 163, 163);
+    --cor_hover : rgb(150, 104, 104);
+    --cor_primaria : rgb(252, 249, 249);
+}
+
+div.fundo_menu {
+    display: inline-block;
+    width: 1900px;
+    height: 105px;
+    column-count: 3;
+    position: relative;
+    background-color: #a4b2c2;
+}
+
+.nome_sistema {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: arial;
+    color: white;
+    position: absolute;
+    margin: -100px 0px 0 550px;
+}
+
+.botao_login {
+    text-align: center;
+}
+
+.btn {
+    width: 150px;
+    height: 60px;
+    position: absolute;
+    margin: 20px 0 0 500px;
+    border: solid 1px gray;
+    background: none;
+    font-size: 30px;
+    font-weight: bold;
+    font: Arial;
+    background-color: rgb(241, 7, 7);
+    color: white;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: rgb(189, 7, 7);
+    color: rgb(218, 196, 196);
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    background-color: var(--cor_fundo);
+    font-size: 15px;
+    font-weight: bold;
+    font-family: arial;
+    color: white;
+}
+
+.menu ul li {
+    display: inline;
+    position: relative;
+}
+
+.menu ul li a {
+    color: var(--cor_primaria);
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px;
+    transition: background .3s;
+}
+
+.menu ul li a:hover {
+    background-color: var(--cor_hover);
+}
+
+.menu ul ul {
+    display: none;
+    left: 0;
+    position: absolute;
+}
+
+.menu ul li:hover ul {
+    display: block;
+}
+
+.menu ul ul {
+    width: 150px;
+}
+
+.menu ul ul li a {
+    display: block;
+}
+
+body {
+    font-family: arial;
+    color: rgb(17, 1, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background-color: #fafafa;
+    margin: 14px;
+    max-width: 800px;
+    width: 100%;
+    box-sizing: 0 3px 5px rbga(0, 0, 0, 0.5);
+}
+

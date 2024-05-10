@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <title>Programação Web Back End</title>
+</head>
+<body>
+    <header class="login">
+        <div class="fundo_menu">
+            <div class="logo_senai">
+                <a href="index.html"><img src="{% static 'imagens/logo_senai.png' %}" /></a>
+            </div>
+            <div class="nome_sistema">
+                Programação Web Back End<br>
+                Sistema de Apoio aos Professores - SAP
+            </div>
+
+            {% if user.is_authenticated %}
+
+            <form id="form" class="form" method="POST" action="accounts/logout/">{% csrf_token %}
+                <div class="botao_login">
+                    <button type="submit" class="btn btn_login">Logout</button>
+                </div>
+            </form>
+            {% else %}
+            <div class="botao_login">
+                <a href="accounts/login"><button class="btn btn_login">Login</button></a>
+            </div>
+            {% endif %}
+        </div>
+    </header>
+    <header class="menu_principal"></header>
+
+    <!-- <nav class="menu">
+        <ul>
+           {% if user.is_authenticated %}
+               <li><a href="/cad_turma/{{id_logado}}">Cadastrar Turmas</a></li>
+
+               <li> | Professor logado: {{usuario_logado}} | </a></li>
+
+           {% endif %}
+        </ul>
+    </nav> -->
+
+</body>
+</html>

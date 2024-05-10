@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página de Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 300px; /* Adicionando largura para melhor apresentação */
+    }
+
+    .error-message {
+      color: red;
+      margin-bottom: 15px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%; /* Adicionando largura de 100% para ocupar a largura do container */
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    {% if next %}
+        {% if user.is_authenticated %}
+          <p>Sua conta não tem acesso a esta página. Por favor faça o login com uma conta com permissão de acesso.</p>
+        {% else %}
+          <p>Por favor faça o Login para ver esta página.</p>
+        {% endif %}
+    {% endif %}
+    <h2>Login</h2>
+        {% if messages %}
+            <ul class="mensagem_do_servidor" style="background: #7d7f81; padding: 24px; text-align:center; color: #fff;">
+                {% for mensagem in messages %}
+                   <li style="list-style: none;" {% if mensagem.tags %}class="alert alert-{{message.tags}}"{% endif %}>{{mensagem}}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+    {% if form.errors %}
+        <p style="border: solid; border-color: red; text-align: center;"> Usuário e/ou Senha ínválidos. <br> Por favor tente novamente.</p>
+    {% endif %}
+
+    <form action="{% url 'login' %}" method="post">{% csrf_token %}
+
+      <label for="email">Email:</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="senha">Senha:</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+
+</body>
+{% endblock %}
+</html>
